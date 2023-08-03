@@ -1,5 +1,5 @@
 import {UseCase} from "../_core/interfaces/use-case.interface";
-import {NotionRepository} from "../domain/repositories/notion.repository";
+import {ApiRepository} from "../domain/repositories/apiRepository";
 import {QueryDatabaseResponse} from "@notionhq/client/build/src/api-endpoints";
 
 export interface GetDatabaseUseCaseParams {
@@ -7,9 +7,9 @@ export interface GetDatabaseUseCaseParams {
 
 export class GetDatabaseUseCase
   implements UseCase<GetDatabaseUseCaseParams, QueryDatabaseResponse | undefined> {
-  private notionRepository: NotionRepository;
+  private notionRepository: ApiRepository;
 
-  constructor(notionApiRepository: NotionRepository) {
+  constructor(notionApiRepository: ApiRepository) {
     this.notionRepository = notionApiRepository;
   }
 

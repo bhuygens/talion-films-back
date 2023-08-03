@@ -1,4 +1,4 @@
-export interface ClipModel {
+export interface EventModel {
   id: string,
   project_name: string,
   client: string

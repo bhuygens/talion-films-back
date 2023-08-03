@@ -1,7 +1,7 @@
 import {Request, Response, Router} from "express";
-import {makeNotionApiRepositoryFactory} from "../../factories/notion-api-repository.factory";
-import {GetAllClipsUseCase} from "../../../application/clips/get-all-clips-use-case";
-import {GetClipByIdUseCase} from "../../../application/clips/get-clip-by-id.use-case";
+import {makeNotionApiRepositoryFactory} from "../../../factories/notion-api-repository.factory";
+import {GetAllClipsUseCase} from "../../../../application/clips/get-all-clips-use-case";
+import {GetClipByIdUseCase} from "../../../../application/clips/get-clip-by-id.use-case";
 
 const createError = require('http-errors')
 
@@ -10,7 +10,7 @@ export function createClipsRouter(): Router {
   router.get("/", async (req: Request, res: Response) => {
     try {
       const notionRepository = makeNotionApiRepositoryFactory();
-      const clips = await new GetAllClipsUseCase(notionRepository).execute("");
+      const clips = await new GetAllClipsUseCase(notionRepository).execute();
       res.json(clips);
     } catch (e) {
       res.status(404).json({

@@ -7,7 +7,7 @@ type GetClipByIdParams = {
   id: string
 }
 
-export class GetClipByIdUseCase implements UseCase<GetClipByIdParams, EventModel> {
+export class GetPubByIdUseCase implements UseCase<GetClipByIdParams, EventModel> {
   private notionRepository: ApiRepository
 
   constructor(notionApiRepository: ApiRepository) {
@@ -16,13 +16,13 @@ export class GetClipByIdUseCase implements UseCase<GetClipByIdParams, EventModel
 
   async execute(params: GetClipByIdParams): Promise<EventModel> {
     try {
-      const clipCached = await CacheModule.get<EventModel>(`clip/${params.id}`);
-      if (clipCached) {
-        return clipCached;
+      const pubCached = await CacheModule.get<EventModel>(`pub/${params.id}`);
+      if (pubCached) {
+        return pubCached;
       }
-      const clip = await this.notionRepository.getEventById(params.id);
-      await CacheModule.set(`clip/${params.id}`, clip);
-      return clip;
+      const pub = await this.notionRepository.getEventById(params.id);
+      await CacheModule.set(`pub/${params.id}`, pub);
+      return pub;
     } catch (e) {
       throw e;
     }

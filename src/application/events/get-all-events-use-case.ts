@@ -1,10 +1,10 @@
 import {UseCase} from "../../_core/interfaces/use-case.interface";
 import {ApiRepository} from "../../domain/repositories/apiRepository";
-import {CacheModule} from "../../_core/modules/cache.module";
 import {EventModel} from "../../domain/model/eventModel";
+import {CacheModule} from "../../_core/modules/cache.module";
 import {EventTypes} from "../../_core/interfaces/event-types.enum";
 
-export class GetAllClipsUseCase implements UseCase<any, EventModel[]> {
+export class GetAllEventsUseCase implements UseCase<any, EventModel[]> {
   private notionRepository: ApiRepository
 
   constructor(notionApiRepository: ApiRepository) {
@@ -12,13 +12,12 @@ export class GetAllClipsUseCase implements UseCase<any, EventModel[]> {
   }
 
   async execute(): Promise<EventModel[]> {
-    const clipsCached = await CacheModule.get<EventModel[]>('clips');
-    if (clipsCached) {
-      return clipsCached;
+    const eventsCached = await CacheModule.get<EventModel[]>("events");
+    if (eventsCached) {
+      return eventsCached;
     }
-    const clips = await this.notionRepository.getAllFromType(EventTypes.Clip);
-    await CacheModule.set('clips', clips);
-    return clips;
+    const events = await this.notionRepository.getAllFromType(EventTypes.Event);
+    await CacheModule.set("events", events);
+    return events;
   }
 }
-

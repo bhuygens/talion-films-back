@@ -1,14 +1,14 @@
 import {NotionPage} from "./notion-api.response";
-import {ClipModel} from "../../../domain/model/clip.model";
+import {EventModel} from "../../../domain/model/eventModel";
 
 export class NotionApiSerializer {
-  public static deserializeAllClips(clips: NotionPage[]): ClipModel[] {
-    const formattedClips: ClipModel[] = [];
+  public static deserializeAllClips(clips: NotionPage[]): EventModel[] {
+    const formattedClips: EventModel[] = [];
     clips.forEach((clip: NotionPage) => formattedClips.push(NotionApiSerializer.deserializeClip(clip)));
     return formattedClips;
   }
 
-  public static deserializeClip(clip: NotionPage): ClipModel {
+  public static deserializeClip(clip: NotionPage): EventModel {
     return {
       id: clip.id,
       project_name: clip.properties.project_name.rich_text[0].plain_text,
