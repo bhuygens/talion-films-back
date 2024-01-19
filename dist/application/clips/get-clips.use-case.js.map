@@ -1,0 +1,1 @@
+{"version":3,"file":"get-clips.use-case.js","sourceRoot":"","sources":["../../../src/application/clips/get-clips.use-case.ts"],"names":[],"mappings":";;;AAIA,MAAa,eAAe;IAG1B,YAAY,mBAAqC;QAC/C,IAAI,CAAC,gBAAgB,GAAG,mBAAmB,CAAC;IAC9C,CAAC;IAED,OAAO,CAAC,MAAW;QACjB,MAAM,KAAK,GAAG,IAAI,CAAC,gBAAgB,CAAC,QAAQ,EAAE,CAAC;QAC/C,OAAO,KAAK,CAAC;IACf,CAAC;CACF;AAXD,0CAWC"}
